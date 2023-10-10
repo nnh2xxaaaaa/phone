@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Spreadsheet from "x-data-spreadsheet";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-app-with-store';
+  visible = false;
+
+  open(): void {
+    this.visible = true;
+
+  }
+
+  close(): void {
+    this.visible = false;
+  }
 }

@@ -1,0 +1,79 @@
+<div class="bg-white">
+    <header class="absolute inset-x-0 top-0 z-50">
+
+        <nav class="flex items-center justify-between p-6 lg:px-8 nav-header" aria-label="Global">
+            <div class="flex lg:flex-1">
+                <a class="-m-1.5 p-1.5">
+                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                        alt="">
+                </a>
+            </div>
+            <div class="flex lg:hidden">
+                <button type="button"
+                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+                <a class="text-sm font-semibold leading-6 text-gray-900">Phone</a>
+                <a class="text-sm font-semibold leading-6 text-gray-900">Laptop</a>
+                <a class="text-sm font-semibold leading-6 text-gray-900">Tablet</a>
+                <a class="text-sm font-semibold leading-6 text-gray-900">PC - Computer Screen</a>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12" style="margin-left: 20px;">
+                <div class="text-sm font-semibold leading-6 text-gray-900">
+                    <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                        <input type="text" nz-input placeholder="input search text"
+                            style="width: 400px; margin-left: 50px;" />
+                    </nz-input-group>
+                    <ng-template #suffixButton>
+                        <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                <nz-badge [nzCount]="10" nzShowZero>
+                    <a class="head-example"></a>
+                </nz-badge>
+                <a class="text-sm font-semibold leading-6 text-gray-900"><span nz-icon nzType="shopping-cart"
+                        style="font-size: 40px; color: rgb(24, 40, 188);" nzTheme="outline"></span>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <div>
+                <span nz-icon nzType="search" class="search" nzTheme="outline"></span>
+            </div>
+            <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+
+                <a class="group" *ngFor="let item of listPhone$ | async" (click)="buy(item.id)">
+                    <h3 class="mt-4 text-sm text-gray-700 installment"> Installment {{item.installment}}%</h3>
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                        <img src={{item.img}}
+                            alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+                            class="h-full w-full object-cover object-center group-hover:opacity-75" height="200px"
+                            width="400px">
+                    </div>
+                    <div style="display: flex; ">
+                        <p class="mt-1 text-lg font-medium text-gray-900 infoPhone">{{item.inch}}</p>
+                        <p class="mt-1 text-lg font-medium text-gray-900 infoPhone">{{item.ram}}</p>
+                        <p class="mt-1 text-lg font-medium text-gray-900 infoPhone">{{item.memory}}</p>
+                    </div>
+                    <h3 class="mt-4 text-sm text-gray-700" style="color: blue;">{{item.name}}</h3>
+                    <p class="mt-1 text-lg font-medium text-gray-900 cash">{{item.cash}}đ</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
