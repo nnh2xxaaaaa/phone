@@ -1,7 +1,31 @@
 .add {
-    background-color: red;
+    background-color: rgb(16, 17, 1);
 }
 
 .add-product:hover {
     background-color: aqua;
+}
+
+.img-product {
+    background-color: white;
+}
+
+.add-shopping {
+    background-color: rgb(208, 16, 16);
+    border-radius: 10px;
+}
+
+.cash {
+    font-size: 45px;
+}
+
+
+.list {
+    font-size: 1200px !important;
+    color: lightblue !important;
+}
+
+.ant-page-header-heading-title {
+    font-size: 1200px !important;
+    color: lightblue !important;
 }

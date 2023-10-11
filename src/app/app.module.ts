@@ -32,6 +32,7 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { OrderDetailsComponent } from './component/list-of-products/order-details/order-details.component';
 import { ProductDetailsComponent } from './component/list-of-products/product-details/product-details.component';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 registerLocaleData(en);
 
 @NgModule({
@@ -64,7 +65,8 @@ registerLocaleData(en);
     NzModalModule,
     NzIconModule,
     NzBadgeModule,
-    NzInputNumberModule
+    NzInputNumberModule,
+    NzPageHeaderModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
