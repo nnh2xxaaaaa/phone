@@ -19,28 +19,28 @@ export class OrderDetailsComponent implements OnInit {
 
   }
 
-  sendEmail() {
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: 'papbap2xxO@gmail.com',
-        pass: 'An123456789', // Use an App Password or store this securely
-      },
-    });
+  // sendEmail() {
+  //   const transporter = nodemailer.createTransport({
+  //     service: 'Gmail',
+  //     auth: {
+  //       user: 'papbap2xxO@gmail.com',
+  //       pass: 'An123456789', // Use an App Password or store this securely
+  //     },
+  //   });
 
-    const mailOptions = {
-      from: 'papbap2xxO@gmail.com',
-      to: 'ngonhathuy6878@gmail.com',
-      subject: 'Test email',
-      html: '<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>',
-    };
+  //   const mailOptions = {
+  //     from: 'papbap2xxO@gmail.com',
+  //     to: 'ngonhathuy6878@gmail.com',
+  //     subject: 'Test email',
+  //     html: '<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>',
+  //   };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
-  }
+  //   transporter.sendMail(mailOptions, (error, info) => {
+  //     if (error) {
+  //       console.error(error);
+  //     } else {
+  //       console.log('Email sent: ' + info.response);
+  //     }
+  //   });
+  // }
 }
