@@ -8,15 +8,19 @@ export enum PHONE {
     'SELECT_PHONE' = "[SELECT_PHONE] GET BY ID ORDER",
     'ADD_PRODUCT' = "[ADD_PRODUCT] GET ADD PRODUCT",
     'QUANTITY' = "[QUANTITY] GET QUANTITY",
+    'DELET_IN_ORDER' = "[DELETIN_PRODUCT] GET DELETE IN ORDER",
     'TOTAL_ORDER' = "[TOTAL] GET TOTAL ORDER",
     'SHIPPING' = "[SHIPPING] GET SHIPPING",
     'VAT' = "[VAT] GET VAT",
     'DISCOUNT' = "[DISCOUNT] GET DISCOUNT",
-    "ALL_TOTAL" = "[ALL] GET ALL TOTAL "
+    "ALL_TOTAL" = "[ALL] GET ALL TOTAL",
+    'EXPORT EXCEL' = "[EXPORT] EXCEL",
+    "SAVE_ORDER_FORM_CUSTOMER" = "[SAVE_ORDER] SAVE ORDERFORM CUSTOMER"
+
 }
 
 export const getListPhone = createAction(
-    PHONE.LIST_PHONE, props<{ listPhone: InfoPhone }>(),
+    PHONE.LIST_PHONE, props<{ listPhone: InfoPhone[] }>(),
 )
 
 export const save_id_order = createAction(
@@ -57,3 +61,16 @@ export const all_cash = createAction(
     PHONE.ALL_TOTAL
 )
 
+export const delete_in_order = createAction(
+    PHONE.DELET_IN_ORDER,
+    props<{ id: string }>()
+)
+
+export const exportExcel = createAction(
+    PHONE['EXPORT EXCEL']
+)
+
+export const saveTrackingCustomer = createAction(
+    PHONE.SAVE_ORDER_FORM_CUSTOMER,
+    props<{ trackingId: string }>()
+)

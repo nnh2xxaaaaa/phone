@@ -31,20 +31,21 @@
             <div class="hidden lg:flex lg:gap-x-12" style="margin-left: 20px;">
                 <div class="text-sm font-semibold leading-6 text-gray-900">
                     <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-                        <input type="text" nz-input placeholder="input search text"
-                            style="width: 400px; margin-left: 50px;" />
+                        <input type="text" nz-input placeholder="Search your tracking ..."
+                            style="width: 400px; margin-left: 50px;" [(ngModel)]="searchTerm" />
                     </nz-input-group>
                     <ng-template #suffixButton>
-                        <button nz-button nzType="primary" nzSize="large" nzSearch>Search</button>
+                        <button nz-button nzType="primary" nzSize="large" nzSearch (click)="onSearch()">Search</button>
                     </ng-template>
                 </div>
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                <nz-badge [nzCount]="10" nzShowZero>
+                <nz-badge [nzCount]="total$ | async" nzShowZero>
                     <a class="head-example"></a>
                 </nz-badge>
-                <a class="text-sm font-semibold leading-6 text-gray-900"><span nz-icon nzType="shopping-cart"
-                        style="font-size: 40px; color: rgb(24, 40, 188);" nzTheme="outline"></span>
+                <a (click)="order()" class="text-sm font-semibold leading-6 text-gray-900"><span nz-icon
+                        nzType="shopping-cart" style="font-size: 40px; color: rgb(24, 40, 188);"
+                        nzTheme="outline"></span>
                 </a>
             </div>
         </nav>

@@ -11,7 +11,7 @@ export interface InfoPhone {
     installment?: number
 }
 
-export interface ListOder {
+export interface ListOrder {
     id?: string
     name?: string;
     cash?: number;
@@ -23,4 +23,10 @@ export interface ListOder {
     operating_system?: string;
     installment?: number,
     quantity?: number
+}
+
+
+export interface save_order {
+    tracking_order: string,
+    listOder: ListOrder[]
 }

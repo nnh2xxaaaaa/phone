@@ -30,6 +30,12 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "resolve.fallback": { "os": false },
+    "resolve": {
+      "fallback": {
+        "os": false
+      }
+    }
   }
 }

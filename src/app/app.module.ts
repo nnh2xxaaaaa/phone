@@ -33,6 +33,7 @@ import { OrderDetailsComponent } from './component/list-of-products/order-detail
 import { ProductDetailsComponent } from './component/list-of-products/product-details/product-details.component';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { ReactiveFormsModule } from '@angular/forms';
 registerLocaleData(en);
 
 @NgModule({
@@ -66,7 +67,8 @@ registerLocaleData(en);
     NzIconModule,
     NzBadgeModule,
     NzInputNumberModule,
-    NzPageHeaderModule
+    NzPageHeaderModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

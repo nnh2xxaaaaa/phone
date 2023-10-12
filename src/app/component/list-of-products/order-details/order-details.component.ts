@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as nodemailer from 'nodemailer';
+import { all_cash, delete_in_order, discounts, exportExcel, saveTrackingCustomer, shipping, total_order_phone, vat } from 'src/store-default-app/store-state-phone/store-phone-action.action';
+import * as XLSX from 'xlsx'
+import { v4 as uuidv4 } from 'uuid';
+
 
 @Component({
   selector: 'app-order-details',
@@ -14,33 +17,31 @@ export class OrderDetailsComponent implements OnInit {
   readonly shipping$ = this.store.select((item: any) => Number(item.phone.shipping).toLocaleString('en-US'))
   readonly discount$ = this.store.select((item: any) => Number(item.phone.discount).toLocaleString('en-US'))
   readonly total$ = this.store.select((item: any) => Number(item.phone.total_cash).toLocaleString('en-US'))
-  constructor(private store: Store) { }
+  constructor(private store: Store,) { }
+  realtime: string = `${new Date().toString().slice(0, 21)} [ Viet Nam Time ]`
+  tracking: string = uuidv4().slice(0, 8)
   ngOnInit(): void {
 
   }
 
-  // sendEmail() {
-  //   const transporter = nodemailer.createTransport({
-  //     service: 'Gmail',
-  //     auth: {
-  //       user: 'papbap2xxO@gmail.com',
-  //       pass: 'An123456789', // Use an App Password or store this securely
-  //     },
-  //   });
+  deleteInOrder(id: string) {
+    this.store.dispatch(delete_in_order({ id: id }))
+    this.store.dispatch(total_order_phone())
+    this.store.dispatch(shipping())
+    this.store.dispatch(vat())
+    this.store.dispatch(discounts({ discount: 0.1 }))
+    this.store.dispatch(all_cash())
 
-  //   const mailOptions = {
-  //     from: 'papbap2xxO@gmail.com',
-  //     to: 'ngonhathuy6878@gmail.com',
-  //     subject: 'Test email',
-  //     html: '<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>',
-  //   };
+  }
 
-  //   transporter.sendMail(mailOptions, (error, info) => {
-  //     if (error) {
-  //       console.error(error);
-  //     } else {
-  //       console.log('Email sent: ' + info.response);
-  //     }
-  //   });
-  // }
+  exportExcel() {
+    this.store.dispatch(exportExcel())
+  }
+
+  saveOrder() {
+    this.store.dispatch(saveTrackingCustomer({ trackingId: this.tracking }))
+  }
+
+
 }
+

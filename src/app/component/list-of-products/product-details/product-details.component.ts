@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { InfoPhone } from 'src/model/index-list-phone';
-import { add_order_phone, all_cash, discounts, set_quantity, shipping, total_order_phone, vat } from 'src/store-default-app/store-state-phone/store-phone-action.action';
+import { add_order_phone, all_cash, discounts, saveTrackingCustomer, set_quantity, shipping, total_order_phone, vat } from 'src/store-default-app/store-state-phone/store-phone-action.action';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-product-details',
@@ -51,6 +52,8 @@ export class ProductDetailsComponent implements OnInit {
     this.store.dispatch(vat())
     this.store.dispatch(discounts({ discount: 0.1 }))
     this.store.dispatch(all_cash())
+    // this.store.dispatch(saveTrackingCustomer({ trackingId: uuidv4() }))
+
   }
 
   order() {
