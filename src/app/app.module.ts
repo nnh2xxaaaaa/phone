@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { phoneReducer } from 'src/store-default-app/store-state-phone/store-phone-reducer.reducer';
 import { StoreModule } from '@ngrx/store';
@@ -34,6 +33,8 @@ import { ProductDetailsComponent } from './component/list-of-products/product-de
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NzResultModule } from 'ng-zorro-antd/result';
+import { CompleteOrderPhoneComponent } from './component/complete/complete-order-phone/complete-order-phone.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -44,7 +45,8 @@ registerLocaleData(en);
     RegisterComponent,
     ListOfProductsComponent,
     OrderDetailsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CompleteOrderPhoneComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ registerLocaleData(en);
     NzBadgeModule,
     NzInputNumberModule,
     NzPageHeaderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzResultModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

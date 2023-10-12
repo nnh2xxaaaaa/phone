@@ -13,7 +13,7 @@ export class LoginDetailsComponent {
 
   showModal(): void {
     this.isVisible = true;
-    this.router.navigate(['list-prdducts'])
+    this.router.navigate(['list-products'])
   }
 
   handleOk(): void {
@@ -24,6 +24,10 @@ export class LoginDetailsComponent {
   handleCancel(): void {
     console.log('Button cancel clicked!');
     this.isVisible = false;
+  }
+
+  homePage() {
+    this.router.navigate(['list-products'])
   }
 
 

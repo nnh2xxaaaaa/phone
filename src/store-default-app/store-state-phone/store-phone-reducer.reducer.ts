@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { State } from 'src/model/index-state.model';
-import { add_order_phone, all_cash, delete_in_order, discounts, exportExcel, getListPhone, saveTrackingCustomer, save_id_order, select_item_phone, set_quantity, shipping, total_order_phone, vat } from './store-phone-action.action';
+import { add_order_phone, all_cash, delete_in_order, discounts, exportExcel, getListPhone, resetOrder, saveTrackingCustomer, save_id_order, select_item_phone, set_quantity, shipping, total_order_phone, vat } from './store-phone-action.action';
 import * as XLSX from 'xlsx'
 
 export const initialState: State = {
@@ -198,9 +198,11 @@ export const phoneReducer = createReducer(
     on(saveTrackingCustomer, (state, { trackingId }) => ({
         ...state,
         saveTracking: [...state.saveTracking, { tracking_order: trackingId, list_order: state.list_order }],
-    }))
+    })),
 
-
-
+    on(resetOrder, (state,) => ({
+        ...state,
+        list_order: []
+    })),
 
 );

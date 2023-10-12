@@ -38,7 +38,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/list-prdducts'])
+    this.router.navigate(['/list-products'])
   }
   customPrecisionFn(value: string | number, precision?: number): number {
     return +Number(value).toFixed(precision! + 1);

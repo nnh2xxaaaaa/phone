@@ -15,7 +15,8 @@ export enum PHONE {
     'DISCOUNT' = "[DISCOUNT] GET DISCOUNT",
     "ALL_TOTAL" = "[ALL] GET ALL TOTAL",
     'EXPORT EXCEL' = "[EXPORT] EXCEL",
-    "SAVE_ORDER_FORM_CUSTOMER" = "[SAVE_ORDER] SAVE ORDERFORM CUSTOMER"
+    "SAVE_ORDER_FORM_CUSTOMER" = "[SAVE_ORDER] SAVE ORDERFORM CUSTOMER",
+    "RESET_ORDER" = '[RESET ORDER] GET RESET ORDER",'
 
 }
 
@@ -73,4 +74,8 @@ export const exportExcel = createAction(
 export const saveTrackingCustomer = createAction(
     PHONE.SAVE_ORDER_FORM_CUSTOMER,
     props<{ trackingId: string }>()
+)
+
+export const resetOrder = createAction(
+    PHONE.RESET_ORDER
 )
