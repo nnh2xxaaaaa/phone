@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { list_of_phone } from 'src/demo/list-phone-demo';
 import { InfoPhone } from 'src/model/index-list-phone';
-import { getListPhone, saveTrackingCustomer, save_id_order, select_item_phone, shipping, vat } from 'src/store-default-app/store-state-phone/store-phone-action.action';
-import { v4 as uuidv4 } from 'uuid';
+import { getListPhone, save_id_order, select_item_phone } from 'src/store-default-app/store-state-phone/store-phone-action.action';
 
 @Component({
   selector: 'app-list-of-products',
