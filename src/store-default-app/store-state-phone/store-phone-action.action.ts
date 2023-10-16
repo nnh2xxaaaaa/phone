@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { InfoPhone } from 'src/model/index-list-phone';
+import { InfoProduct } from 'src/model/index-list-phone';
 
 export enum PHONE {
     'LIST_PHONE' = "[PHONE] GET PHONE LIST",
@@ -17,12 +17,22 @@ export enum PHONE {
     'EXPORT EXCEL' = "[EXPORT] EXCEL",
     "SAVE_ORDER_FORM_CUSTOMER" = "[SAVE_ORDER] SAVE ORDERFORM CUSTOMER",
     "RESET_ORDER" = '[RESET ORDER] GET RESET ORDER',
-    'FIND_ORDER' = '[ORDER] GET FIND ORDER'
+    'FIND_ORDER' = '[ORDER] GET FIND ORDER',
+    'SEARCH_TRACKING' = '[TRACKING] GET SEARCH TRACKING  '
 
 }
 
+enum LAPTOP {
+    'GET_ALL_LAPTOP' = '[LAPTOP]  GET ALL'
+}
+
+export const getListLaptop = createAction(
+    LAPTOP.GET_ALL_LAPTOP,
+    props<{ listLaptop: InfoProduct[] }>()
+)
+
 export const getListPhone = createAction(
-    PHONE.LIST_PHONE, props<{ listPhone: InfoPhone[] }>(),
+    PHONE.LIST_PHONE, props<{ listPhone: InfoProduct[] }>(),
 )
 
 export const save_id_order = createAction(
@@ -83,5 +93,10 @@ export const resetOrder = createAction(
 
 export const findOrder = createAction(
     PHONE.FIND_ORDER,
-    props<{idOrder:string}>()
+    props<{ idOrder: string }>()
 )
+
+// export const searchTracking = createAction(
+//     PHONE.SEARCH_TRACKING,
+//     props<{ idTracking: string }>()
+// )

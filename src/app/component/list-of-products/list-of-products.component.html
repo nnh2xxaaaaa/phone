@@ -23,8 +23,8 @@
 
             </div>
             <div class="hidden lg:flex lg:gap-x-12">
-                <a class="text-sm font-semibold leading-6 text-gray-900">Phone</a>
-                <a class="text-sm font-semibold leading-6 text-gray-900">Laptop</a>
+                <a class="text-sm font-semibold leading-6 text-gray-900" (click)="phone()">Phone</a>
+                <a class="text-sm font-semibold leading-6 text-gray-900" (click)="laptop()">Laptop</a>
                 <a class="text-sm font-semibold leading-6 text-gray-900">Tablet</a>
                 <a class="text-sm font-semibold leading-6 text-gray-900">PC - Computer Screen</a>
             </div>
@@ -32,7 +32,7 @@
                 <div class="text-sm font-semibold leading-6 text-gray-900">
                     <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
                         <input type="text" nz-input placeholder="Search your tracking ..."
-                            style="width: 400px; margin-left: 50px;" [(ngModel)]="searchTerm" />
+                            style="width: 400px; margin-left: 50px;" [(ngModel)]="search" />
                     </nz-input-group>
                     <ng-template #suffixButton>
                         <button nz-button nzType="primary" nzSize="large" nzSearch (click)="onSearch()">Search</button>
@@ -67,12 +67,14 @@
                             width="400px">
                     </div>
                     <div style="display: flex; ">
-                        <p class="mt-1 text-lg font-medium text-gray-900 infoPhone">{{item.inch}}</p>
-                        <p class="mt-1 text-lg font-medium text-gray-900 infoPhone">{{item.ram}}</p>
-                        <p class="mt-1 text-lg font-medium text-gray-900 infoPhone">{{item.memory}}</p>
+                        <p class="mt-1 text-lg font-medium text-gray-900 InfoProduct">{{item.inch}}</p>
+                        <p class="mt-1 text-lg font-medium text-gray-900 InfoProduct">{{item.ram}}</p>
+                        <p class="mt-1 text-lg font-medium text-gray-900 InfoProduct">{{item.memory}}</p>
                     </div>
                     <h3 class="mt-4 text-sm text-gray-700" style="color: blue;">{{item.name}}</h3>
-                    <p class="mt-1 text-lg font-medium text-gray-900 cash">{{item.cash}}đ</p>
+                    <p class="mt-1 text-lg font-medium text-gray-900 cash">{{
+                        (item.cash).toLocaleString('en-US')}} đ
+                    </p>
                 </a>
             </div>
         </div>

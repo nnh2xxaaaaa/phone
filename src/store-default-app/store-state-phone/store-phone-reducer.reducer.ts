@@ -7,6 +7,7 @@ import {
   discounts,
   exportExcel,
   findOrder,
+  getListLaptop,
   getListPhone,
   resetOrder,
   saveTrackingCustomer,
@@ -21,6 +22,8 @@ import * as XLSX from 'xlsx';
 
 export const initialState: State = {
   phone: [],
+  laptop: [],
+  tablet: [],
   id_order: '',
   product_by_id: {
     id: '',
@@ -33,6 +36,7 @@ export const initialState: State = {
     img: '',
     operating_system: '',
     installment: 0,
+    type: ''
   },
   list_order: [],
   quantity_order_phone: 0,
@@ -42,15 +46,24 @@ export const initialState: State = {
   discount: 0,
   shipping: 0,
   saveTracking: [
-    { tracking_order: '', list_order: [] } // An array with an initial item
-  ],    
+    { tracking_order: '', list_order: [] }
+  ],
+  search_order: [
+    { tracking_order: '', list_order: [] }
+
+  ]
 };
 
 export const phoneReducer = createReducer(
   initialState,
   on(getListPhone, (state, { listPhone }) => ({
     ...state,
-    phone: [...state.phone].concat(listPhone),
+    phone: [...state.phone].concat(listPhone).filter((item) => item.type === 'Phone').slice(0, 12)
+  })),
+
+  on(getListLaptop, (state, { listLaptop }) => ({
+    ...state,
+    laptop: [...state.phone].concat(listLaptop).filter((item) => item.type === 'Laptop').slice(0, 12)
   })),
 
   on(save_id_order, (state, { id_order }) => ({
@@ -68,6 +81,10 @@ export const phoneReducer = createReducer(
       (item) => item.id === state.id_order
     );
 
+    const selectedLaptop = state.laptop.find(
+      (item) => item.id === state.id_order
+    );
+
     if (selectedPhone) {
       const {
         id,
@@ -80,6 +97,7 @@ export const phoneReducer = createReducer(
         img,
         operating_system,
         installment,
+        type
       } = selectedPhone;
 
       return {
@@ -95,6 +113,38 @@ export const phoneReducer = createReducer(
           img,
           operating_system,
           installment: installment,
+          type
+        },
+      };
+    } else if (selectedLaptop) {
+      const {
+        id,
+        name,
+        cash,
+        display,
+        inch,
+        ram,
+        memory,
+        img,
+        operating_system,
+        installment,
+        type
+      } = selectedLaptop;
+
+      return {
+        ...state,
+        product_by_id: {
+          id,
+          name,
+          cash,
+          display,
+          inch,
+          ram,
+          memory,
+          img,
+          operating_system,
+          installment: installment,
+          type
         },
       };
     }
@@ -215,26 +265,15 @@ export const phoneReducer = createReducer(
       tracking_order: trackingId,
       list_order: state.list_order,
     };
-    
-    const updatedSaveTracking = [...state.saveTracking, newTrackingItem];
-  
+    const updatedSaveTracking = [...state.saveTracking, newTrackingItem].filter((item) => item.list_order.length > 0);
     return {
       ...state,
       saveTracking: updatedSaveTracking,
     };
   }),
-  
-  
-  
-  
-  on(findOrder, (state, { idOrder }) => {
-    // Implement your logic here to find the order based on idOrder if needed.
-    // You may want to update some properties in your state based on the found order.
-    // Return the updated state.
-  
-    return state; // You should update this based on your logic.
-  }),
-  
+
+
+
 
   on(resetOrder, (state) => ({
     ...state,
@@ -243,7 +282,14 @@ export const phoneReducer = createReducer(
 
   on(findOrder, (state, { idOrder }) => {
     const findOrder = state.saveTracking;
-
-    return state;
+    const find = findOrder.filter((order) => order.tracking_order === idOrder).filter((item) => item.list_order.length > 0);
+    if (find.length !== 0) {
+      return {
+        ...state,
+        search_order: find
+      };
+    } else {
+      return state
+    }
   })
 );

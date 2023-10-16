@@ -14,11 +14,11 @@
 <div class="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4"
     *ngIf="product_phone$ | async as product; else loading ">
 
-    <div class=" flex justify-center items-center lg:flex-row flex-col gap-8">
-        <div class="w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center">
+    <div class=" flex justify-center items-center lg:flex-row flex-col gap-8 ">
+        <div class="w-full sm:w-96 md:w-8/12 lg:w-6/12 items-center container-content ">
 
-            <p class="font-normal text-base leading-6 text-gray-600  mt-7"
-                style="font-size: 45px;color: black;font-family: 'Times New Roman', Times, serif;">
+            <p class="font-normal text-base leading-6 text-gray-600  mt-5"
+                style="font-size: 30px;color: black;font-family: 'Times New Roman', Times, serif; margin-top: 20px;">
                 {{product.name}}
             </p>
             <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 mt-6 dark:text-white"

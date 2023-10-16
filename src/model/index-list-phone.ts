@@ -1,4 +1,4 @@
-export interface InfoPhone {
+export interface InfoProduct {
     id?: string
     name?: string;
     cash?: number;
@@ -8,7 +8,8 @@ export interface InfoPhone {
     memory?: string;
     img?: string;
     operating_system?: string;
-    installment?: number
+    installment?: number,
+    type: string
 }
 
 export interface ListOrder {

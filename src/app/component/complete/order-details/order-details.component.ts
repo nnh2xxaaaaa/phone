@@ -1,18 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {
-  all_cash,
-  delete_in_order,
-  discounts,
-  exportExcel,
-  resetOrder,
-  saveTrackingCustomer,
-  shipping,
-  total_order_phone,
-  vat,
-} from 'src/store-default-app/store-state-phone/store-phone-action.action';
+
 import { v4 as uuidv4 } from 'uuid';
 import { Router } from '@angular/router';
+import { delete_in_order, total_order_phone, shipping, vat, discounts, all_cash, exportExcel, saveTrackingCustomer, resetOrder } from 'src/store-default-app/store-state-phone/store-phone-action.action';
 
 @Component({
   selector: 'app-order-details',
@@ -38,10 +29,10 @@ export class OrderDetailsComponent implements OnInit {
   readonly total$ = this.store.select((item: any) =>
     Number(item.phone.total_cash).toLocaleString('en-US')
   );
-  constructor(private store: Store, private router: Router) {}
+  constructor(private store: Store, private router: Router) { }
   realtime: string = `${new Date().toString().slice(0, 21)} [ Viet Nam Time ]`;
   tracking: string = uuidv4().slice(0, 8);
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   deleteInOrder(id: string) {
     this.store.dispatch(delete_in_order({ id: id }));
@@ -59,11 +50,6 @@ export class OrderDetailsComponent implements OnInit {
   saveOrder() {
     this.store.dispatch(saveTrackingCustomer({ trackingId: this.tracking }));
     this.store.dispatch(resetOrder());
-    this.store.dispatch(total_order_phone());
-    this.store.dispatch(shipping());
-    this.store.dispatch(vat());
-    this.store.dispatch(discounts({ discount: 0.1 }));
-    this.store.dispatch(all_cash());
     this.router.navigate(['/order-phone-complete']);
   }
 }

@@ -28,13 +28,15 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { ListOfProductsComponent } from './component/list-of-products/list-of-products.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
-import { OrderDetailsComponent } from './component/list-of-products/order-details/order-details.component';
+import { OrderDetailsComponent } from './component/component-detail-order/order-details/order-details.component';
 import { ProductDetailsComponent } from './component/list-of-products/product-details/product-details.component';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzResultModule } from 'ng-zorro-antd/result';
-import { CompleteOrderPhoneComponent } from './component/complete/complete-order-phone/complete-order-phone.component';
+import { CompleteOrderPhoneComponent } from './component/component-detail-order/complete-order-phone/complete-order-phone.component';
+import { DetailOrderSearchComponent } from './component/component-detail-order/detail-order-search/detail-order-search.component';
+import { OrderCartIsEmptyComponent } from './order-cart-is-empty/order-cart-is-empty.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -46,7 +48,9 @@ registerLocaleData(en);
     ListOfProductsComponent,
     OrderDetailsComponent,
     ProductDetailsComponent,
-    CompleteOrderPhoneComponent
+    CompleteOrderPhoneComponent,
+    DetailOrderSearchComponent,
+    OrderCartIsEmptyComponent
   ],
   imports: [
     BrowserModule,

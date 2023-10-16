@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { InfoPhone } from 'src/model/index-list-phone';
-import { add_order_phone, all_cash, discounts, saveTrackingCustomer, set_quantity, shipping, total_order_phone, vat } from 'src/store-default-app/store-state-phone/store-phone-action.action';
-import { v4 as uuidv4 } from 'uuid';
+import { InfoProduct } from 'src/model/index-list-phone';
+import { add_order_phone, all_cash, discounts, set_quantity, shipping, total_order_phone, vat } from 'src/store-default-app/store-state-phone/store-phone-action.action';
 
 @Component({
   selector: 'app-product-details',
@@ -23,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
   customFnValue: number = 1;
   precision: number = 2;
 
-  constructor(private store: Store<{ product_by_id: InfoPhone }>, private router: Router) {
+  constructor(private store: Store<{ product_by_id: InfoProduct }>, private router: Router) {
     setInterval(() => {
       this.time = new Date().getHours().toString() + ':' + new Date().getMinutes().toString() + ':' + new Date().getSeconds();
     })
