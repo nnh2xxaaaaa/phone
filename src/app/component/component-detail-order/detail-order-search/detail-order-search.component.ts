@@ -26,8 +26,14 @@ export class DetailOrderSearchComponent implements OnInit {
   readonly total$ = this.store.select((item: any) =>
     Number(item.phone.total_cash).toLocaleString('en-US')
   );
-  constructor(readonly store: Store) { }
+  time: string = ''
+  constructor(readonly store: Store) {
+    setInterval(() => {
+      this.time = new Date().toDateString();
+    })
+  }
   ngOnInit(): void {
     this.list$.subscribe((state: any) => console.log('state', state))
+
   }
 }

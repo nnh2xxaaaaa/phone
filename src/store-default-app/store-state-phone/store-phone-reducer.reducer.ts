@@ -152,10 +152,13 @@ export const phoneReducer = createReducer(
     return state;
   }),
   on(add_order_phone, (state) => {
-    const order = state.phone.find(
-      (order_phone) => order_phone.id === state.id_order
+    const order_phone = state.phone.find(
+      (order_phone) => order_phone.id === state.id_order && order_phone.type === 'Phone'
     );
-    if (order) {
+    const order_laptop = state.laptop.find(
+      (order_laptop) => order_laptop.id === state.id_order && order_laptop.type === 'Laptop'
+    );
+    if (order_phone && order_phone != undefined) {
       const {
         id,
         name,
@@ -167,8 +170,11 @@ export const phoneReducer = createReducer(
         img,
         operating_system,
         installment,
-      } = order;
+      } = order_phone;
       const quantity = Number(state.quantity_order_phone);
+
+      console.log('phone', order_phone);
+
 
       const orderby = [
         ...state.list_order,
@@ -202,6 +208,57 @@ export const phoneReducer = createReducer(
         }
       });
 
+      return {
+        ...state,
+        list_order: Object.values(groupId),
+      };
+    } else if (order_laptop && order_laptop != undefined) {
+      const {
+        id,
+        name,
+        cash,
+        display,
+        inch,
+        ram,
+        memory,
+        img,
+        operating_system,
+        installment,
+      } = order_laptop;
+      const quantity = Number(state.quantity_order_phone);
+      console.log('lap', order_laptop);
+
+      const orderby = [
+        ...state.list_order,
+        {
+          id,
+          name,
+          cash,
+          display,
+          inch,
+          ram,
+          memory,
+          img,
+          operating_system,
+          installment,
+          quantity,
+        },
+      ];
+
+      const groupId: { [key: string]: any } = {};
+
+      orderby.forEach((item) => {
+        if (item !== undefined) {
+          const id = item.id;
+          if (id !== '' && id !== undefined) {
+            if (groupId[id]) {
+              groupId[id].quantity += item.quantity;
+            } else {
+              groupId[id] = { ...item };
+            }
+          }
+        }
+      });
       return {
         ...state,
         list_order: Object.values(groupId),

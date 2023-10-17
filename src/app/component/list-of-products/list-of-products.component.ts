@@ -41,6 +41,7 @@ export class ListOfProductsComponent implements OnInit {
 
   buy(id: string) {
     this.store.dispatch(save_id_order({ id_order: id }));
+    console.log(id)
     this.store.dispatch(select_item_phone());
     this.router.navigate(['/product-details']);
     console.log('id', id);

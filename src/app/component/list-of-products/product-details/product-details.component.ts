@@ -13,6 +13,9 @@ export class ProductDetailsComponent implements OnInit {
   demoValue = 1;
   readonly product_phone$ = this.store.select((state: any) => state.phone.product_by_id)
   total$ = this.store.select((state: any) => state.phone.list_order.length)
+  readonly list_order$ = this.store.select(
+    (item: any) => item.phone.list_order
+  );
   time: string = ''
 
   add: number = 0;
@@ -39,6 +42,7 @@ export class ProductDetailsComponent implements OnInit {
   onBack(): void {
     this.router.navigate(['/list-products'])
   }
+
   customPrecisionFn(value: string | number, precision?: number): number {
     return +Number(value).toFixed(precision! + 1);
   }
@@ -56,6 +60,13 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   order() {
-    this.router.navigate(['/order-details'])
+    // this.router.navigate(['/order-details'])
+    this.list_order$.subscribe((list) => {
+      if (list.length == 0) {
+        this.router.navigate(['/empty-order-details'])
+      } else {
+        this.router.navigate(['/order-details']);
+      }
+    })
   }
 }
