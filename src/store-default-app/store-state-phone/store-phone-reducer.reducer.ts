@@ -58,7 +58,7 @@ export const phoneReducer = createReducer(
   initialState,
   on(getListPhone, (state, { listPhone }) => ({
     ...state,
-    phone: [...state.phone].concat(listPhone).filter((item) => item.type === 'Phone').slice(0, 12)
+    phone: listPhone.filter((product) => product.type === 'Phone')
   })),
 
   on(getListLaptop, (state, { listLaptop }) => ({
